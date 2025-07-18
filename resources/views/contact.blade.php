@@ -1,13 +1,11 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 @include('components.head', [
-    'title' => 'CampusBite Menu | Affordable Food for Strathmore Students',
-    'meta_description' => 'Browse the CampusBite menu for affordable student meals, chapati wraps, rice bowls, snacks, and drinks. Order food online for fast campus delivery and enjoy budget-friendly bites!',
+    'title' => 'Contact CampusBite | Affordable Food for Strathmore Students',
+    'meta_description' => 'Contact CampusBite for campus food delivery, student deals, and healthy eating tips. Reach out for support, feedback, or partnership inquiries.',
     'canonical' => url()->current(),
-    'og_title' => 'CampusBite Menu | Affordable Food for Strathmore Students',
-    'og_description' => 'Browse the CampusBite menu for affordable student meals, chapati wraps, rice bowls, snacks, and drinks. Order food online for fast campus delivery and enjoy budget-friendly bites!',
+    'og_title' => 'Contact CampusBite | Affordable Food for Strathmore Students',
+    'og_description' => 'Contact CampusBite for campus food delivery, student deals, and healthy eating tips. Reach out for support, feedback, or partnership inquiries.',
     'og_url' => url()->current(),
 ])
 <body class="bg-light" style="background: linear-gradient(rgba(30,30,30,0.7), rgba(30,30,30,0.7)), url('/img/hero-bg.jpg') center/cover no-repeat fixed; min-height: 100vh;">
@@ -29,42 +27,35 @@
         </div>
       </div>
     </nav>
-    <main class="container py-5" style="font-family:'Montserrat',sans-serif;">
+    <main class="container py-5 animate__animated animate__fadeIn" style="font-family:'Montserrat',sans-serif;">
         <div class="d-flex align-items-center mb-4">
-            <h1 class="mb-0 gradient-text" style="font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:1px;">CampusBite Menu</h1>
+            <h1 class="mb-0 gradient-text" style="font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:1px;">Contact CampusBite</h1>
         </div>
         <p class="mb-4" style="color:#124B45; background:rgba(255,255,255,0.95); border-radius:1rem; padding:1rem 1.5rem; box-shadow:0 2px 12px #0001; font-family:'Montserrat',sans-serif;">
-            Discover our student-friendly menu: chapati wraps, rice bowls, snacks, and drinks, all delivered fast to your campus.<br>
-            <span class="d-block mt-2" style="color:#124B45;">🍔 <strong>Chapati wraps, rice bowls, fries, smoothies</strong></span>
-            <span class="d-block" style="color:#fbbf24;">🎉 <strong>First order? Use <span style='background:#fbbf24;color:#124B45;padding:2px 6px;border-radius:6px;'>FIRST10</span> for 10% off!</strong></span>
-            <span class="d-block" style="color:#22c55e;">📧 <strong>Sign up for exclusive deals & free soda</strong></span>
-            <div class="mt-3">
-                <a href="/register" class="btn btn-warning btn-lg me-2 shadow" style="background:#fbbf24;color:#124B45;border:none;font-weight:600;">Sign Up & Get 10% Off</a>
-                <a href="/cart" class="btn btn-primary btn-lg" style="background:#124B45;border:none;">View Cart</a>
-                <a href="/blog" class="btn btn-outline-primary btn-lg ms-2" style="color:#124B45;border-color:#124B45;">Read Food Tips</a>
-            </div>
+            Have a question, feedback, or partnership inquiry? Reach out to CampusBite below.<br>
+            <span class="d-block mt-2" style="color:#124B45;">📧 <strong>Email: info@campusbite.com</strong></span>
+            <span class="d-block" style="color:#fbbf24;">📞 <strong>Phone: 0712 345678</strong></span>
+            <span class="d-block" style="color:#22c55e;">💬 <strong>Or use the contact form below</strong></span>
         </p>
-        <div class="row">
-            @forelse($menus as $menu)
-                <div class="col-md-4 mb-4">
-                    <div class="card border-0 shadow-sm h-100 feature-card animate__animated animate__fadeInUp" style="background:#fffbe3;border-radius:1.25rem;">
-                        <img src="{{ $menu->image_url }}" class="card-img-top" alt="{{ $menu->name }} - CampusBite menu item" loading="lazy" style="object-fit:cover;max-height:180px;border-top-left-radius:1.25rem;border-top-right-radius:1.25rem;">
-                        <div class="card-body text-center p-4">
-                            <h5 class="card-title mt-2" style="font-weight:700;color:#124B45;">{{ $menu->name }}</h5>
-                            <p class="card-text text-secondary">{{ $menu->description }}</p>
-                            <p class="card-text fw-bold" style="color:#22c55e;">KES {{ number_format($menu->price, 2) }}</p>
-                            <form method="POST" action="{{ route('cart.add', $menu->id) }}" class="d-inline">
-                                @csrf
-                                <button type="submit" class="btn btn-primary shadow" style="background:#124B45;border:none;">Add to Cart</button>
-                            </form>
-                        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <form action="/contact" method="POST" class="card border-0 shadow-sm p-4" style="background:#fffbe3;border-radius:1.25rem;">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
-                </div>
-            @empty
-                <div class="col-12">
-                    <div class="alert alert-warning text-center">No menu items available at the moment.</div>
-                </div>
-            @endforelse
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Your Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="background:#124B45;border:none;">Send Message</button>
+                </form>
+            </div>
         </div>
         <style>
             .gradient-text {
@@ -72,18 +63,6 @@
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
-            }
-            .feature-card .card-title {font-family:'Montserrat',sans-serif;}
-            @media (max-width: 767px) {
-                .feature-card {border-radius:1rem;}
-            }
-            .btn-outline-primary {
-                color: #124B45;
-                border-color: #124B45;
-            }
-            .btn-outline-primary:hover {
-                background-color: #124B45;
-                color: #fff;
             }
             .btn-primary {
                 background-color: #124B45;
@@ -125,6 +104,7 @@
             <div class="text-center mt-4" style="color:#fbbf24;">&copy; 2025 CampusBite. All rights reserved.</div>
         </div>
     </footer>
+    <!-- SEO: Schema.org Organization & WebSite markup -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

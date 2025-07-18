@@ -12,9 +12,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::view('/dashboard', 'dashboard')->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -43,5 +41,8 @@ Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
 // Robots.txt
 Route::view('/robots.txt', 'robots.txt')->name('robots.txt');
+
+// Contact
+Route::view('/contact', 'contact')->name('contact');
 
 require __DIR__.'/auth.php';

@@ -60,35 +60,66 @@
 </head>
 <body>
     {{-- Responsive, animated navigation --}}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 shadow-sm" aria-label="Main navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/">CampusBite</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('menu.index') }}">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('cart.index') }}">Cart</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('blog.index') }}">Blog</a></li>
-                    {{-- Guest links --}}
-                    @guest
-                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                    @endguest
-                    {{-- Authenticated user links --}}
-                    @auth
-                        <li class="nav-item"><a class="nav-link" href="#">Hi, {{ Auth::user()->name }}</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>
-                    @endauth
-                </ul>
-            </div>
+
+    <!-- Custom Header Branding -->
+    <nav class="navbar navbar-expand-lg" style="background:#124B45;">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="/" style="color:#fbbf24;font-size:2rem;">CampusBite</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="color:#fff;"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="{{ route('menu.index') }}" style="color:#fff;">Menu</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('cart.index') }}" style="color:#fff;">Cart</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('blog.index') }}" style="color:#fff;">Blog</a></li>
+            @guest
+                <li class="nav-item"><a class="nav-link" href="{{ route('register') }}" style="color:#fff;">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}" style="color:#fff;">Login</a></li>
+            @endguest
+            @auth
+                <li class="nav-item"><a class="nav-link" href="#" style="color:#fbbf24;">Hi, {{ Auth::user()->name }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}" style="color:#fff;">Logout</a></li>
+            @endauth
+          </ul>
+          <a href="/register" class="btn btn-outline-warning ms-3" style="color:#124B45;border-color:#fbbf24;background:#fbbf24;font-weight:600;">Sign Up & Get 10% Off</a>
         </div>
+      </div>
     </nav>
 
     <main>
         @yield('content')
     </main>
+    <!-- Custom Footer Branding -->
+    <footer style="background:#124B45; color:#fff; padding:2rem 0; margin-top:2rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 style="color:#fbbf24;font-weight:700;">CampusBite</h5>
+                    <p style="color:#fff;">Affordable food for Strathmore students. Fast delivery, healthy options, and exclusive deals.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6 style="color:#fbbf24;">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('menu.index') }}" style="color:#fff;">Menu</a></li>
+                        <li><a href="{{ route('register') }}" style="color:#fff;">Sign Up</a></li>
+                        <li><a href="{{ route('blog.index') }}" style="color:#fff;">Blog</a></li>
+                        <li><a href="/contact" style="color:#fff;">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6 style="color:#fbbf24;">Contact</h6>
+                    <p style="color:#fff;">Email: info@campusbite.com<br>Phone: 0712 345678</p>
+                    <div class="d-flex gap-3 mt-2">
+                        <a href="#" style="color:#fff;font-size:1.5rem;"><i class="bi bi-facebook"></i></a>
+                        <a href="#" style="color:#fff;font-size:1.5rem;"><i class="bi bi-instagram"></i></a>
+                        <a href="#" style="color:#fff;font-size:1.5rem;"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4" style="color:#fbbf24;">&copy; 2025 CampusBite. All rights reserved.</div>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
